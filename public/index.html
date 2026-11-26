@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="Impostor — a real-time word party game for 3–20 players. Discuss together, find the impostor." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="IMPOSTER" />
+  <title>IMPOSTER — the word party game</title>
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/icon-192.png" />
+  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    #splash { position: fixed; inset: 0; z-index: 9999; background: #fff;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity .4s ease; }
+    #splash.gone { opacity: 0; pointer-events: none; }
+    #splash .splash-logo { text-align: center; animation: splashPop .55s cubic-bezier(.2, 1.4, .4, 1) both; }
+    #splash svg { width: 112px; height: 112px; display: block; margin: 0 auto 10px; }
+    #splash .splash-word { margin: 0; font: 800 34px/1.1 system-ui, -apple-system, 'Segoe UI', sans-serif;
+      letter-spacing: .14em; text-indent: .14em;
+      background: linear-gradient(100deg, #0b76c1, #5b3df5 45%, #d6336c);
+      -webkit-background-clip: text; background-clip: text; color: transparent; }
+    #splash .splash-hint { margin: 12px 0 0; font: 600 13px system-ui, sans-serif; color: #5a6675;
+      animation: splashPulse 1.2s ease-in-out infinite; }
+    @keyframes splashPop { from { transform: scale(.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    @keyframes splashPulse { 0%, 100% { opacity: .45; } 50% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) {
+      #splash { transition: none; }
+      #splash .splash-logo, #splash .splash-hint { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="splash">
+    <div class="splash-logo">
+      <svg viewBox="0 0 96 96" role="img" aria-label="IMPOSTER logo">
+        <defs>
+          <linearGradient id="imp-g" x1="0" y1="0" x2="96" y2="96" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#0b76c1"/>
+            <stop offset=".5" stop-color="#5b3df5"/>
+            <stop offset="1" stop-color="#d6336c"/>
+          </linearGradient>
+        </defs>
+        <circle cx="40" cy="40" r="24" fill="#e8f2fd"/>
+        <circle cx="40" cy="40" r="24" fill="none" stroke="url(#imp-g)" stroke-width="9"/>
+        <text x="40" y="51" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="30" font-weight="800" fill="#5b3df5">?</text>
+        <line x1="58" y1="58" x2="81" y2="81" stroke="url(#imp-g)" stroke-width="11" stroke-linecap="round"/>
+      </svg>
+      <p class="splash-word">IMPOSTER</p>
+      <p class="splash-hint">finding the impostor…</p>
+    </div>
+  </div>
+  <div id="offline" class="offline hidden">Reconnecting…</div>
+  <main id="app"></main>
+  <div id="live" class="sr-only" aria-live="polite" role="status"></div>
+  <div id="toast" class="toast hidden" role="alert"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

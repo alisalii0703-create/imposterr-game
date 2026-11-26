@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="IMPOSTER logo">
+  <defs>
+    <linearGradient id="imp-g" x1="0" y1="0" x2="96" y2="96" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0b76c1"/>
+      <stop offset=".5" stop-color="#5b3df5"/>
+      <stop offset="1" stop-color="#d6336c"/>
+    </linearGradient>
+  </defs>
+  <circle cx="40" cy="40" r="24" fill="#e8f2fd"/>
+  <circle cx="40" cy="40" r="24" fill="none" stroke="url(#imp-g)" stroke-width="9"/>
+  <text x="40" y="51" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="30" font-weight="800" fill="#5b3df5">?</text>
+  <line x1="58" y1="58" x2="81" y2="81" stroke="url(#imp-g)" stroke-width="11" stroke-linecap="round"/>
+</svg>

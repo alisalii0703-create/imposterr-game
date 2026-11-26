@@ -1,0 +1,24 @@
+# One-click deploy on Render (https://render.com) — gives you a permanent HTTPS URL.
+# Dashboard → New → Blueprint → point it at your repo, or open:
+#   https://render.com/deploy?repo=<your repo url>
+services:
+  - type: web
+    name: imposter-game
+    runtime: docker
+    plan: starter # a persistent disk requires a paid instance type
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 8080
+      # Public price for IMPOSTER Pro, $9.90 USD/month. Not a secret.
+      - key: STRIPE_PRICE_ID
+        value: price_1UfpISBxrGrxChU4R5TyBdE7
+      # The only value you are asked for during the deploy.
+      - key: STRIPE_SECRET_KEY
+        sync: false
+    disk:
+      name: pro-data
+      mountPath: /app/data
+      sizeGB: 1
